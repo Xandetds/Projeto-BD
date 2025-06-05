@@ -36,21 +36,20 @@ Nosso banco de dados é composto por 8 tabelas principais:
 O projeto está organizado na seguinte estrutura de diretórios para melhor modularidade e clareza:
 
 .
-├── database/ # Contém todos os scripts e documentação relacionados ao banco de dados
-│ ├── ddl/ # Scripts de Data Definition Language (criação de tabelas)
-│ │ └── create_tables.sql # Script principal de criação do esquema do DB
-│ ├── dml/ # Scripts de Data Manipulation Language (inserção de dados)
-│ │ └── insert_data.sql # Script de inserção de dados de exemplo
-│ ├── functions/ # Scripts de Functions e Procedures (implementações futuras)
-│ ├── triggers/ # Scripts de Triggers (implementações futuras)
-│ ├── views/ # Scripts de Views (implementações futuras)
-│ └── docs/ # Documentação adicional do banco de dados
-│ └── Modelo_Físico.png # Diagrama do modelo físico do DB
-├── src/ # Código fonte de aplicações (ex: CRUD em linguagem de programação)
-│ └── [linguagem_escolhida]/ # Ex: python/, javascript/ - para o CRUD (implementação futura)
-├── .gitignore # Arquivo para o Git ignorar arquivos e pastas específicos
-├── README.md # Este arquivo de documentação do projeto
-└── LICENSE # Informações sobre a licença de uso do código (se aplicável)
+├── database/                   # Contém todos os scripts e documentação relacionados ao banco de dados
+│   ├── ddl/                    # Scripts de Data Definition Language (criação de tabelas)
+│   │   └── create_tables.sql   # Script principal de criação do esquema do DB
+│   ├── dml/                    # Scripts de Data Manipulation Language (inserção de dados)
+│   │   └── insert_data.sql     # Script de inserção de dados de exemplo
+│   ├── functions/              # Scripts de Functions e Procedures (implementações futuras)
+│   ├── triggers/               # Scripts de Triggers (implementações futuras)
+│   ├── views/                  # Scripts de Views (implementações futuras)
+│   └── docs/                   # Documentação adicional do banco de dados
+│       └── Modelo_Físico.png   # Diagrama do modelo físico do DB
+├── src/                        # Código fonte de aplicações (ex: CRUD em linguagem de programação)
+│   └── [linguagem_escolhida]/ # Ex: python/, javascript/ - para o CRUD (implementação futura)
+├── .gitignore                  # Arquivo para o Git ignorar arquivos e pastas específicos
+└── README.md                   # Este arquivo de documentação do projeto
 
 
 
