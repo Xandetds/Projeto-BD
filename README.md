@@ -31,10 +31,13 @@ Nosso banco de dados é composto por 8 tabelas principais:
 * `avaliacoes`
 * `favoritos`
 
+![Diagrama do Modelo Físico do Sistema de Streaming](database/docs/Modelo_Físico.png)
+
 ## Estrutura do Repositório
 
 O projeto está organizado na seguinte estrutura de diretórios para melhor modularidade e clareza:
 
+<pre>
 .
 ├── database/                   # Contém todos os scripts e documentação relacionados ao banco de dados
 │   ├── ddl/                    # Scripts de Data Definition Language (criação de tabelas)
@@ -50,11 +53,7 @@ O projeto está organizado na seguinte estrutura de diretórios para melhor modu
 │   └── [linguagem_escolhida]/ # Ex: python/, javascript/ - para o CRUD (implementação futura)
 ├── .gitignore                  # Arquivo para o Git ignorar arquivos e pastas específicos
 └── README.md                   # Este arquivo de documentação do projeto
-
-
-
-
-![Diagrama do Modelo Físico do Sistema de Streaming](database/docs/Modelo_Físico.png)
+</pre>
 
 ## Progresso e Próximas Fases do Projeto
 
@@ -97,7 +96,3 @@ Este `README.md` será atualizado continuamente, refletindo o progresso das impl
 * **Guilherme Victor Machado**
 * **Lucas Hoffmann**
 *(Estudantes de Engenharia de Software, Unisatc.)*
-
-## Licença
-
-Este projeto está licenciado sob a Licença MIT.
