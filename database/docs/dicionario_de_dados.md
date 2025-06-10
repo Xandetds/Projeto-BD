@@ -1,111 +1,104 @@
 # Dicionário de Dados - Sistema de Streaming
 
-Este documento detalha a estrutura das tabelas e colunas do banco de dados relacional do sistema de streaming, incluindo seus tipos de dados, restrições e propósitos.
+Este documento detalha a estrutura das tabelas e colunas do banco de dados relacional do sistema de streaming, conforme definido no script SQL de criação.
 
 ---
 
 ## Tabela: `usuarios`
 
-**Propósito:** Armazena informações sobre os usuários da plataforma de streaming.
+**Propósito:** Armazena informações dos usuários da plataforma de streaming.
 
-| Coluna          | Tipo de Dados     | Restrições           | Descrição                                         |
-| :-------------- | :---------------- | :------------------- | :------------------------------------------------ |
-| `usuario_id`    | `SERIAL`          | `PK`, `NOT NULL`     | Identificador único do usuário.                   |
-| `nome`          | `VARCHAR(100)`    | `NOT NULL`           | Nome completo do usuário.                         |
-| `email`         | `VARCHAR(100)`    | `UNIQUE`, `NOT NULL` | Endereço de e-mail do usuário (usado para login). |
-| `senha_hash`    | `VARCHAR(255)`    | `NOT NULL`           | Hash da senha do usuário.                         |
-| `data_nascimento`| `DATE`           |                      | Data de nascimento do usuário.                    |
-| `data_registro` | `DATE`            | `DEFAULT CURRENT_DATE` | Data em que o usuário foi registrado.             |
-| `ativo`         | `BOOLEAN`         | `DEFAULT TRUE`       | Indica se a conta do usuário está ativa.          |
+| Coluna          | Tipo de Dados  | Restrições               | Descrição                                         |
+| :-------------- | :------------- | :----------------------- | :------------------------------------------------ |
+| `id_usuario`    | `SERIAL`       | `PRIMARY KEY`            | Identificador único do usuário.                   |
+| `nome`          | `VARCHAR(100)` | `NOT NULL`               | Nome completo do usuário.                         |
+| `email`         | `VARCHAR(100)` | `UNIQUE`, `NOT NULL`     | Endereço de e-mail do usuário, único para login.  |
+| `senha`         | `VARCHAR(100)` | `NOT NULL`               | Senha do usuário.                                 |
+| `data_nascimento`| `DATE`         | `NOT NULL`               | Data de nascimento do usuário.                    |
 
 ---
 
 ## Tabela: `tipos_conteudo`
 
-**Propósito:** Classifica os diferentes tipos de conteúdo disponíveis no sistema (ex: Filme, Série, Música).
+**Propósito:** Classifica os tipos de conteúdo disponíveis (ex: Filme, Série, Música).
 
-| Coluna            | Tipo de Dados    | Restrições           | Descrição                                     |
-| :---------------- | :--------------- | :------------------- | :-------------------------------------------- |
-| `tipo_conteudo_id`| `SERIAL`         | `PK`, `NOT NULL`     | Identificador único do tipo de conteúdo.      |
-| `nome_tipo`       | `VARCHAR(50)`    | `UNIQUE`, `NOT NULL` | Nome do tipo de conteúdo (ex: 'Filme', 'Série').|
-| `descricao`       | `VARCHAR(255)`   |                      | Breve descrição do tipo de conteúdo.          |
+| Coluna            | Tipo de Dados  | Restrições           | Descrição                                     |
+| :---------------- | :------------- | :------------------- | :-------------------------------------------- |
+| `id_tipo`         | `SERIAL`       | `PRIMARY KEY`        | Identificador único do tipo de conteúdo.      |
+| `nome_tipo`       | `VARCHAR(50)`  | `NOT NULL`           | Nome do tipo de conteúdo (ex: 'Filme', 'Série').|
+| `descricao`       | `VARCHAR(255)` |                      | Breve descrição do tipo de conteúdo.          |
 
 ---
 
 ## Tabela: `conteudos`
 
-**Propósito:** Contém os detalhes de todos os filmes, séries, músicas, etc., disponíveis na plataforma.
+**Propósito:** Detalhes de todos os conteúdos disponíveis para streaming.
 
-| Coluna          | Tipo de Dados    | Restrições           | Descrição                                         |
-| :-------------- | :--------------- | :------------------- | :------------------------------------------------ |
-| `conteudo_id`   | `SERIAL`         | `PK`, `NOT NULL`     | Identificador único do conteúdo.                  |
-| `titulo`        | `VARCHAR(255)`   | `NOT NULL`           | Título do conteúdo.                               |
-| `descricao`     | `TEXT`           |                      | Descrição detalhada do conteúdo.                  |
-| `ano_lancamento`| `INT`            |                      | Ano de lançamento do conteúdo.                    |
-| `duracao_minutos`| `INT`           | `NOT NULL`           | Duração total do conteúdo em minutos.             |
-| `tipo_conteudo_id`| `INT`          | `FK`, `NOT NULL`     | ID do tipo de conteúdo (relaciona com `tipos_conteudo`).|
-| `url_midia`     | `VARCHAR(255)`   | `UNIQUE`, `NOT NULL` | URL ou caminho para o arquivo de mídia do conteúdo.|
-| `data_adicao`   | `DATE`           | `DEFAULT CURRENT_DATE` | Data em que o conteúdo foi adicionado à plataforma.|
-| `ativo`         | `BOOLEAN`        | `DEFAULT TRUE`       | Indica se o conteúdo está ativo e disponível.      |
+| Coluna           | Tipo de Dados    | Restrições           | Descrição                                         |
+| :--------------- | :--------------- | :------------------- | :------------------------------------------------ |
+| `id_conteudo`    | `SERIAL`         | `PRIMARY KEY`        | Identificador único do conteúdo.                  |
+| `titulo`         | `VARCHAR(100)`   | `NOT NULL`           | Título do conteúdo.                               |
+| `descricao`      | `TEXT`           |                      | Descrição detalhada do conteúdo.                  |
+| `duracao_min`    | `INT`            | `NOT NULL`           | Duração total do conteúdo em minutos.             |
+| `data_lancamento`| `DATE`           |                      | Data de lançamento do conteúdo.                   |
+| `id_tipo`        | `INT`            | `FOREIGN KEY`        | ID do tipo de conteúdo (referencia `tipos_conteudo`).|
 
 ---
 
 ## Tabela: `acessos`
 
-**Propósito:** Registra cada vez que um usuário acessa um conteúdo, incluindo detalhes do acesso.
+**Propósito:** Registra cada vez que um usuário acessa um conteúdo.
 
-| Coluna            | Tipo de Dados  | Restrições           | Descrição                                     |
-| :---------------- | :------------- | :------------------- | :-------------------------------------------- |
-| `acesso_id`       | `SERIAL`       | `PK`, `NOT NULL`     | Identificador único do acesso.                |
-| `usuario_id`      | `INT`          | `FK`, `NOT NULL`     | ID do usuário que realizou o acesso.         |
-| `conteudo_id`     | `INT`          | `FK`, `NOT NULL`     | ID do conteúdo acessado.                     |
-| `data_hora_acesso`| `TIMESTAMP`    | `DEFAULT CURRENT_TIMESTAMP` | Data e hora exata do início do acesso.        |
-| `tempo_assistido_segundos` | `INT` |                      | Tempo total assistido do conteúdo em segundos.|
+| Coluna                | Tipo de Dados   | Restrições               | Descrição                                     |
+| :-------------------- | :-------------- | :----------------------- | :-------------------------------------------- |
+| `id_acesso`           | `SERIAL`        | `PRIMARY KEY`            | Identificador único do acesso.                |
+| `id_usuario`          | `INT`           | `FOREIGN KEY`            | ID do usuário que realizou o acesso (referencia `usuarios`).|
+| `id_conteudo`         | `INT`           | `FOREIGN KEY`            | ID do conteúdo acessado (referencia `conteudos`).|
+| `data_acesso`         | `TIMESTAMP`     | `DEFAULT CURRENT_TIMESTAMP`| Data e hora exata do início do acesso.        |
+| `tempo_assistido_min` | `INT`           |                          | Tempo total assistido do conteúdo em minutos. |
 
 ---
 
 ## Tabela: `planos`
 
-**Propósito:** Define os diferentes planos de assinatura disponíveis para os usuários.
+**Propósito:** Define os diferentes planos de assinatura disponíveis.
 
-| Coluna                 | Tipo de Dados    | Restrições           | Descrição                                 |
-| :--------------------- | :--------------- | :------------------- | :---------------------------------------- |
-| `plano_id`             | `SERIAL`         | `PK`, `NOT NULL`     | Identificador único do plano de assinatura. |
-| `nome_plano`           | `VARCHAR(50)`    | `UNIQUE`, `NOT NULL` | Nome do plano (ex: 'Básico', 'Premium').  |
-| `valor`                | `DECIMAL(10, 2)` | `NOT NULL`           | Preço do plano.                           |
-| `qualidade_video`      | `VARCHAR(50)`    |                      | Qualidade máxima de vídeo permitida pelo plano (ex: 'HD', '4K').|
-| `num_telas_simultaneas`| `INT`            |                      | Número de telas que podem usar o plano simultaneamente.|
-| `descricao`            | `TEXT`           |                      | Descrição detalhada dos benefícios do plano.|
+| Coluna            | Tipo de Dados    | Restrições           | Descrição                                 |
+| :---------------- | :--------------- | :------------------- | :---------------------------------------- |
+| `id_plano`        | `SERIAL`         | `PRIMARY KEY`        | Identificador único do plano de assinatura. |
+| `nome_plano`      | `VARCHAR(50)`    | `NOT NULL`           | Nome do plano (ex: 'Básico', 'Premium').  |
+| `preco_mensal`    | `DECIMAL(6, 2)`  | `NOT NULL`           | Preço mensal do plano.                    |
+| `limite_perfils`  | `INT`            |                      | Número máximo de perfis permitidos por plano.|
+| `qualidade`       | `VARCHAR(20)`    |                      | Qualidade de vídeo associada ao plano (Ex: HD, FullHD, 4K).|
 
 ---
 
 ## Tabela: `assinaturas`
 
-**Propósito:** Registra as assinaturas ativas e históricas dos usuários aos planos.
+**Propósito:** Registra as assinaturas dos usuários aos planos.
 
-| Coluna               | Tipo de Dados    | Restrições           | Descrição                                     |
-| :------------------- | :--------------- | :------------------- | :-------------------------------------------- |
-| `assinatura_id`      | `SERIAL`         | `PK`, `NOT NULL`     | Identificador único da assinatura.            |
-| `usuario_id`         | `INT`            | `FK`, `NOT NULL`     | ID do usuário que possui a assinatura.        |
-| `plano_id`           | `INT`            | `FK`, `NOT NULL`     | ID do plano de assinatura associado.          |
-| `data_inicio`        | `DATE`           | `NOT NULL`           | Data de início da assinatura.                 |
-| `data_fim`           | `DATE`           |                      | Data de término da assinatura (pode ser nulo para planos recorrentes).|
-| `status_assinatura`  | `VARCHAR(20)`    | `DEFAULT 'Ativa'`    | Status atual da assinatura (ex: 'Ativa', 'Cancelada', 'Expirada').|
+| Coluna            | Tipo de Dados  | Restrições                                     | Descrição                                     |
+| :---------------- | :------------- | :--------------------------------------------- | :-------------------------------------------- |
+| `id_assinatura`   | `SERIAL`       | `PRIMARY KEY`                                  | Identificador único da assinatura.            |
+| `id_usuario`      | `INT`          | `FOREIGN KEY`                                  | ID do usuário que possui a assinatura (referencia `usuarios`).|
+| `id_plano`        | `INT`          | `FOREIGN KEY`                                  | ID do plano de assinatura (referencia `planos`).|
+| `data_inicio`     | `DATE`         | `NOT NULL`                                     | Data de início da assinatura.                 |
+| `status`          | `VARCHAR(10)`  | `CHECK (status IN ('ativa', 'cancelada', 'pendente'))`, `DEFAULT 'ativa'`| Status atual da assinatura.                   |
 
 ---
 
 ## Tabela: `avaliacoes`
 
-**Propósito:** Armazena as avaliações e notas que os usuários dão aos conteúdos.
+**Propósito:** Armazena as avaliações de usuários para os conteúdos.
 
-| Coluna              | Tipo de Dados  | Restrições           | Descrição                                     |
-| :------------------ | :------------- | :------------------- | :-------------------------------------------- |
-| `id_avaliacao`      | `SERIAL`       | `PK`, `NOT NULL`     | Identificador único da avaliação.             |
-| `id_usuario`        | `INT`          | `FK`, `NOT NULL`     | ID do usuário que fez a avaliação.            |
-| `id_conteudo`       | `INT`          | `FK`, `NOT NULL`     | ID do conteúdo avaliado.                     |
-| `nota`              | `INT`          | `NOT NULL`           | Nota atribuída ao conteúdo (ex: 1 a 5).      |
-| `comentario`        | `TEXT`         |                      | Comentário opcional do usuário sobre o conteúdo.|
-| `data_avaliacao`    | `TIMESTAMP`    | `DEFAULT CURRENT_TIMESTAMP` | Data e hora em que a avaliação foi feita.   |
+| Coluna            | Tipo de Dados  | Restrições                                   | Descrição                                     |
+| :---------------- | :------------- | :------------------------------------------- | :-------------------------------------------- |
+| `id_feedback`     | `SERIAL`       | `PRIMARY KEY`                                | Identificador único do feedback/avaliação.    |
+| `id_usuario`      | `INT`          | `FOREIGN KEY`                                | ID do usuário que fez a avaliação (referencia `usuarios`).|
+| `id_conteudo`     | `INT`          | `FOREIGN KEY`                                | ID do conteúdo avaliado (referencia `conteudos`).|
+| `nota`            | `SMALLINT`     | `CHECK (nota >= 1 AND nota <= 5)`            | Nota atribuída ao conteúdo (entre 1 e 5).     |
+| `comentario`      | `VARCHAR(1000)`|                                              | Comentário opcional do usuário.               |
+| `data_avaliacao`  | `TIMESTAMP`    | `DEFAULT CURRENT_TIMESTAMP`                  | Data e hora em que a avaliação foi registrada.|
 
 ---
 
@@ -113,10 +106,9 @@ Este documento detalha a estrutura das tabelas e colunas do banco de dados relac
 
 **Propósito:** Registra os conteúdos que os usuários marcaram como favoritos.
 
-| Coluna            | Tipo de Dados  | Restrições                  | Descrição                                     |
-| :---------------- | :------------- | :-------------------------- | :-------------------------------------------- |
-| `id_favorito`     | `SERIAL`       | `PK`, `NOT NULL`            | Identificador único do item favorito.         |
-| `id_usuario`      | `INT`          | `FK`, `NOT NULL`            | ID do usuário que favoritou o conteúdo.       |
-| `id_conteudo`     | `INT`          | `FK`, `NOT NULL`            | ID do conteúdo favorito.                     |
-| `data_adicao`     | `TIMESTAMP`    | `DEFAULT CURRENT_TIMESTAMP` | Data e hora em que o conteúdo foi adicionado aos favoritos.|
+| Coluna           | Tipo de Dados  | Restrições                  | Descrição                                     |
+| :--------------- | :------------- | :-------------------------- | :-------------------------------------------- |
+| `id_favorito`    | `SERIAL`       | `PRIMARY KEY`               | Identificador único do item favorito.         |
+| `id_usuario`     | `INT`          | `FOREIGN KEY`               | ID do usuário que favoritou o conteúdo (referencia `usuarios`).|
+| `id_conteudo`    | `INT`          | `FOREIGN KEY`               | ID do conteúdo favorito (referencia `conteudos`).|
 | `(id_usuario, id_conteudo)` |      | `UNIQUE`                    | Garante que um usuário não possa favoritar o mesmo conteúdo mais de uma vez.|
