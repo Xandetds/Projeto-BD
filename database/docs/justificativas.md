@@ -30,6 +30,16 @@ Este documento detalha a finalidade e a justificativa para a escolha e implement
 
 ### 1. `trg_atualizar_visualizacoes_conteudo` (associado à função `f_atualizar_visualizacoes_conteudo`)
 
-* **O que faz:** Acionado após cada nova inserção em `acessos`, incrementa o contador de visualizações (`visualizacoes`) do conteúdo relacionado na tabela `conteudos`.
+* **O que faz:** Acionado após cada inserção em `acessos`, incrementa o contador de visualizações (`visualizacoes`) do conteúdo relacionado na tabela `conteudos`.
 * **Por que é útil:** Garante atualização automática e consistente das métricas de popularidade do conteúdo.
 * **Por que um Trigger:** Ideal para automatizar ações no banco de dados em resposta a eventos específicos (INSERT, UPDATE, DELETE), mantendo a lógica encapsulada no nível do banco.
+
+---
+
+## Views
+
+### 1. `view_conteudos_mais_populares`
+
+* **O que faz:** Lista os conteúdos da plataforma, do mais para o menos visualizado, incluindo ID, título, tipo e total de visualizações.
+* **Por que é útil:** Simplifica a obtenção rápida de métricas de popularidade para o frontend e relatórios, evitando consultas complexas repetidas.
+* **Por que uma View:** Encapsula uma consulta complexa (JOIN e ordenação), criando uma "tabela virtual" que facilita o acesso e a reutilização dos dados.
