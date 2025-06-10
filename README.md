@@ -92,24 +92,20 @@ Este `README.md` será atualizado continuamente, refletindo o progresso das impl
 
 * Desenvolvimento de um **CRUD** (Create, Read, Update, Delete) para interação com o banco de dados em uma linguagem de programação.
 
-### Fase Final: Entrega e Apresentação
-
-* Conclusão total do projeto e preparação para a apresentação.
-
 ## Como Configurar e Rodar
 
-1. Clone este repositório: `git clone https://github.com/Xandetds/Projeto-BD.git`
+1.  Clone este repositório: `git clone https://github.com/Xandetds/Projeto-BD.git`
 
-2. Navegue até a pasta do projeto: `cd Projeto-BD`
+2.  Navegue até a pasta do projeto: `cd Projeto-BD`
 
-3. Crie o banco de dados `streaming_db` no PostgreSQL.
+3.  Crie o banco de dados `streaming_db` no PostgreSQL.
 
-4. Execute os scripts SQL na ordem:
+4.  Execute os scripts SQL na ordem:
 
-   * `psql -U seu_usuario -d streaming_db -f database/ddl/create_tables.sql`
+    * `psql -U seu_usuario -d streaming_db -f database/ddl/create_tables.sql`
 
-   * `psql -U seu_usuario -d streaming_db -f database/dml/insert_data.sql`
-     *(Os caminhos acima assumem a estrutura de pastas proposta.)*
+    * `psql -U seu_usuario -d streaming_db -f database/dml/insert_data.sql`
+        *(Os caminhos acima assumem a estrutura de pastas proposta.)*
 
 ## Autores
 
@@ -118,4 +114,4 @@ Este `README.md` será atualizado continuamente, refletindo o progresso das impl
 * **Guilherme Victor Machado**
 
 * **Lucas Hoffmann**
-  *(Estudantes de Engenharia de Software, Unisatc.)*
+    *(Estudantes de Engenharia de Software, Unisatc.)*
