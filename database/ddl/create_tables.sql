@@ -61,6 +61,6 @@ CREATE TABLE favoritos (
     id_favorito SERIAL PRIMARY KEY,
     id_usuario INT REFERENCES usuarios(id_usuario),
     id_conteudo INT REFERENCES conteudos(id_conteudo),
-    UNIQUE (id_usuario, id_conteudo) -- Adiciona esta linha
+    UNIQUE (id_usuario, id_conteudo) 
 );
 
