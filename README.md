@@ -114,4 +114,5 @@ Este `README.md` será atualizado continuamente, refletindo o progresso das impl
 * **Guilherme Victor Machado**
 
 * **Lucas Hoffmann**
-    *(Estudantes de Engenharia de Software, Unisatc.)*
+    
+*(Estudantes de Engenharia de Software, Unisatc.)*
