@@ -49,3 +49,9 @@ Este documento detalha a finalidade e a justificativa para a escolha e implement
 * **O que faz:** Exibe informações detalhadas de usuários com assinaturas ativas, associando-os aos seus respectivos planos. Inclui dados do usuário, nome do plano e data de início da assinatura.
 * **Por que é útil:** Facilita a consulta de base de assinantes segmentada por plano, útil para análise de clientes e marketing.
 * **Por que uma View:** Simplifica o acesso a dados combinados de múltiplas tabelas (`usuarios`, `assinaturas`, `planos`), fornecendo uma visão consolidada e filtrada de usuários ativos.
+
+### 3. `view_media_avaliacoes_conteudo`
+
+* **O que faz:** Calcula e exibe a média das notas de avaliação para cada conteúdo, juntamente com o título, tipo e o total de avaliações recebidas.
+* **Por que é útil:** Fornece um ranking de qualidade dos conteúdos percebida pelos usuários, essencial para sistemas de recomendação e para o catálogo da plataforma.
+* **Por que uma View:** Agrega e sumariza dados de avaliações, simplificando a obtenção de métricas de qualidade sem a necessidade de reescrever consultas de agregação complexas.
