@@ -23,3 +23,13 @@ Este documento detalha a finalidade e a justificativa para a escolha e implement
 * **O que faz:** Verifica se um conteúdo específico (`p_conteudo_id`) está ativo e disponível na plataforma.
 * **Por que é útil:** Garante que apenas conteúdos válidos e ativos sejam exibidos ou processados, evitando acesso a itens desativados.
 * **Por que uma Função:** Retorna um valor booleano simples, perfeito para uso em condições ou para informar rapidamente a disponibilidade em qualquer consulta.
+
+---
+
+## Trigger
+
+### 1. `trg_atualizar_visualizacoes_conteudo` (associado à função `f_atualizar_visualizacoes_conteudo`)
+
+* **O que faz:** Acionado após cada nova inserção em `acessos`, incrementa o contador de visualizações (`visualizacoes`) do conteúdo relacionado na tabela `conteudos`.
+* **Por que é útil:** Garante atualização automática e consistente das métricas de popularidade do conteúdo.
+* **Por que um Trigger:** Ideal para automatizar ações no banco de dados em resposta a eventos específicos (INSERT, UPDATE, DELETE), mantendo a lógica encapsulada no nível do banco.
