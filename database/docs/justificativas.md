@@ -17,3 +17,9 @@ Este documento detalha a finalidade e a justificativa para a escolha e implement
 * **O que faz:** Verifica e atualiza o status de assinaturas expiradas (de 'ativa'/'pendente' para 'expirada') com base na `data_fim`.
 * **Por que é útil:** Garante a consistência automática dos dados de assinatura, essencial para a gestão de acessos e cobranças.
 * **Por que um Procedure:** Ideal para executar ações que modificam o estado do banco de dados (operação `UPDATE`), sem retornar um valor diretamente para uma consulta.
+
+### 3. `func_conteudo_disponivel(p_conteudo_id INT)`
+
+* **O que faz:** Verifica se um conteúdo específico (`p_conteudo_id`) está ativo e disponível na plataforma.
+* **Por que é útil:** Garante que apenas conteúdos válidos e ativos sejam exibidos ou processados, evitando acesso a itens desativados.
+* **Por que uma Função:** Retorna um valor booleano simples, perfeito para uso em condições ou para informar rapidamente a disponibilidade em qualquer consulta.
