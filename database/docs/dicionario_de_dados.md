@@ -1,5 +1,3 @@
-Markdown
-
 # Dicionário de Dados - Sistema de Streaming
 
 Este documento detalha a estrutura das tabelas e colunas do banco de dados relacional do sistema de streaming, incluindo seus tipos de dados, restrições e propósitos.
