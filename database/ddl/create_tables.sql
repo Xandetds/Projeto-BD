@@ -21,7 +21,8 @@ CREATE TABLE conteudos (
     descricao TEXT,
     duracao_min INT NOT NULL,
     data_lancamento DATE,
-    id_tipo INT REFERENCES tipos_conteudo(id_tipo)
+    id_tipo INT REFERENCES tipos_conteudo(id_tipo),
+    visualizacoes INT DEFAULT 0 
 );
 
 CREATE TABLE acessos (
