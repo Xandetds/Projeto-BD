@@ -55,3 +55,14 @@ Este documento detalha a finalidade e a justificativa para a escolha e implement
 * **O que faz:** Calcula e exibe a média das notas de avaliação para cada conteúdo, juntamente com o título, tipo e o total de avaliações recebidas.
 * **Por que é útil:** Fornece um ranking de qualidade dos conteúdos percebida pelos usuários, essencial para sistemas de recomendação e para o catálogo da plataforma.
 * **Por que uma View:** Agrega e sumariza dados de avaliações, simplificando a obtenção de métricas de qualidade sem a necessidade de reescrever consultas de agregação complexas.
+
+---
+
+## Índices
+
+* **O que fazem:** Otimizam o desempenho das consultas ao criar estruturas de dados que permitem ao banco de dados localizar dados de forma mais rápida, sem precisar escanear tabelas inteiras. São aplicados em colunas frequentemente usadas em buscas (`WHERE`), junções (`JOIN`) e ordenações (`ORDER BY`).
+* **Por que são úteis:** Reduzem significativamente o tempo de resposta para operações de leitura, especialmente em tabelas com grande volume de dados, melhorando a performance geral do sistema.
+* **Justificativa da Escolha:**
+    * **`usuarios.email`:** Essencial para a autenticação e busca de usuários, garantindo login rápido.
+    * **Chaves Estrangeiras (FKs):** Índices em `id_usuario`, `id_conteudo`, `id_tipo`, `id_plano` (nas tabelas `acessos`, `assinaturas`, `avaliacoes`, `favoritos`, `conteudos`) são cruciais para acelerar as operações `JOIN` entre as tabelas, que são comuns em quase todas as consultas complexas do sistema.
+    * **`conteudos.titulo` e `conteudos.visualizacoes` (opcional):** Úteis para funções de busca por título e para a ordenação por popularidade (conteúdos mais visualizados).

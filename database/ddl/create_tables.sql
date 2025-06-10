@@ -65,3 +65,26 @@ CREATE TABLE favoritos (
     UNIQUE (id_usuario, id_conteudo) 
 );
 
+-- Índices para Otimização de Consultas foram colocados aqui para ao criar o banco, os índices já sejam criados.
+
+-- Índice para busca rápida de usuários por email
+CREATE INDEX idx_usuarios_email ON usuarios (email);
+
+-- Índices em Chaves Estrangeiras para otimizar JOINs
+CREATE INDEX idx_acessos_usuario_id ON acessos (id_usuario);
+CREATE INDEX idx_acessos_conteudo_id ON acessos (id_conteudo);
+
+CREATE INDEX idx_assinaturas_usuario_id ON assinaturas (id_usuario);
+CREATE INDEX idx_assinaturas_plano_id ON assinaturas (id_plano);
+
+CREATE INDEX idx_avaliacoes_usuario_id ON avaliacoes (id_usuario);
+CREATE INDEX idx_avaliacoes_conteudo_id ON avaliacoes (id_conteudo);
+
+CREATE INDEX idx_favoritos_usuario_id ON favoritos (id_usuario);
+CREATE INDEX idx_favoritos_conteudo_id ON favoritos (id_conteudo);
+
+CREATE INDEX idx_conteudos_id_tipo ON conteudos (id_tipo);
+
+-- Outros índices úteis (ex: para buscas em títulos, ou ordenação)
+-- CREATE INDEX idx_conteudos_titulo ON conteudos (titulo);
+-- CREATE INDEX idx_conteudos_visualizacoes ON conteudos (visualizacoes DESC);
