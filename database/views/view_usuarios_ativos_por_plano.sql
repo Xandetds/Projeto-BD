@@ -6,15 +6,15 @@ SELECT
     u.nome AS nome_usuario,
     u.email,
     p.nome_plano,
-    p.valor AS valor_plano,
+    p.preco_mensal AS valor_plano,
     a.data_inicio AS data_inicio_assinatura
 FROM
-    usuarios u
+    public.usuarios u
 JOIN
-    assinaturas a ON u.id_usuario = a.id_usuario
+    public.assinaturas a ON u.id_usuario = a.id_usuario
 JOIN
-    planos p ON a.id_plano = p.id_plano
+    public.planos p ON a.id_plano = p.id_plano
 WHERE
-    a.status = 'ativa'; -- Filtra apenas assinaturas ativas
+    a.status = 'ativa';
 
--- Exemplo de uso: SELECT * FROM view_usuarios_ativos_por_plano;
+-- Exemplo de uso: SELECT * FROM public.view_usuarios_ativos_por_plano;

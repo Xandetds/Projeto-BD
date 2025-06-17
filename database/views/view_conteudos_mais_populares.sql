@@ -2,16 +2,17 @@
 
 CREATE OR REPLACE VIEW view_conteudos_mais_populares AS
 SELECT
-    c.conteudo_id,
+    c.id_conteudo,        
+                          
     c.titulo,
     tc.nome_tipo AS tipo_de_conteudo,
-    c.ano_lancamento,
-    c.duracao_minutos,
-    c.visualizacoes
+    c.data_lancamento,    
+    c.duracao_min,        
+    c.visualizacoes      
 FROM
-    conteudos c
+    public.conteudos c    
 JOIN
-    tipos_conteudo tc ON c.id_tipo = tc.id_tipo
+    public.tipos_conteudo tc ON c.id_tipo = tc.id_tipo 
 ORDER BY
     c.visualizacoes DESC, c.titulo ASC;
 
