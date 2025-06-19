@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerenciamento de Usuários</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Define a fonte padrão para todo o corpo do documento */
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-gray-900 text-gray-100 p-8 min-h-screen">
+    <div class="max-w-4xl mx-auto bg-gray-800 p-8 rounded-lg shadow-xl">
+        <h1 class="text-3xl font-bold mb-6 text-indigo-400">Gerenciamento de Usuários</h1>
+
+        {% if users %}
+        <div class="overflow-x-auto">
+            <table class="min-w-full bg-gray-700 rounded-lg shadow-md overflow-hidden">
+                <thead class="bg-gray-600 text-gray-300 uppercase text-sm leading-normal">
+                    <tr>
+                        <th class="py-3 px-6 text-left">ID</th>
+                        <th class="py-3 px-6 text-left">Nome</th>
+                        <th class="py-3 px-6 text-left">Email</th>
+                        <th class="py-3 px-6 text-left">Data Nasc.</th>
+                    </tr>
+                </thead>
+                <tbody class="text-gray-200 text-sm font-light">
+                    {% for user in users %}
+                    <tr class="border-b border-gray-600 hover:bg-gray-600">
+                        <td class="py-3 px-6 text-left whitespace-nowrap">{{ user[0] }}</td> <td class="py-3 px-6 text-left">{{ user[1] }}</td> <td class="py-3 px-6 text-left">{{ user[2] }}</td> <td class="py-3 px-6 text-left">{{ user[3] }}</td> </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% else %}
+        <p class="text-gray-400 text-lg text-center mt-8">Nenhum usuário cadastrado ainda.</p>
+        {% endif %}
+    </div>
+</body>
+</html>
