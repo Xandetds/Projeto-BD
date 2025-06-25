@@ -1,5 +1,3 @@
--- Função: func_conteudo_disponivel
--- Verifica se um conteúdo específico está ativo e disponível.
 
 CREATE OR REPLACE FUNCTION func_conteudo_disponivel(
     p_conteudo_id INT
@@ -23,4 +21,3 @@ BEGIN
 END;
 $$;
 
--- Exemplo de uso: SELECT func_conteudo_disponivel(1);
