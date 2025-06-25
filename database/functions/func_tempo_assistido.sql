@@ -1,5 +1,3 @@
--- Função: func_tempo_assistido
--- Retorna o tempo total assistido por um usuário (em minutos).
 
 CREATE OR REPLACE FUNCTION func_tempo_assistido(
     p_usuario_id INT
@@ -19,4 +17,3 @@ BEGIN
 END;
 $$;
 
--- Exemplo de uso: SELECT func_tempo_assistido(1);
