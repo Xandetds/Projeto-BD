@@ -1,4 +1,3 @@
--- Propósito: Lista usuários com assinaturas ativas, agrupados por plano, incluindo detalhes do plano e do usuário.
 
 CREATE OR REPLACE VIEW view_usuarios_ativos_por_plano AS
 SELECT
@@ -17,4 +16,3 @@ JOIN
 WHERE
     a.status = 'ativa';
 
--- Exemplo de uso: SELECT * FROM public.view_usuarios_ativos_por_plano;
