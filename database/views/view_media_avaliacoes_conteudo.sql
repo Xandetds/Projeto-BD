@@ -1,4 +1,3 @@
--- Propósito: Calcula a média das notas de avaliação para cada conteúdo.
 
 CREATE OR REPLACE VIEW view_media_avaliacoes_conteudo AS
 SELECT
@@ -18,4 +17,3 @@ GROUP BY
 ORDER BY
     media_avaliacao DESC, total_avaliacoes DESC;
 
--- Exemplo de uso: SELECT * FROM public.view_media_avaliacoes_conteudo;
