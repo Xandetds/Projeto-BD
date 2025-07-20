@@ -1,105 +1,92 @@
 # Projeto de Banco de Dados: Sistema de Streaming
 
-## Descrição
+[![PostgreSQL](https://img.shields.io/badge/PostgreSQL-336791?style=for-the-badge&logo=postgresql&logoColor=white)](https://www.postgresql.org/)
+[![Flask](https://img.shields.io/badge/Flask-000000?style=for-the-badge&logo=flask&logoColor=white)](https://flask.palletsprojects.com/)
+[![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
 
-Este projeto consiste no desenvolvimento de um banco de dados relacional para um sistema de streaming, semelhante a plataformas como Netflix ou Prime Video. Ele foi concebido como trabalho final da disciplina de Banco de Dados II.
+📺 Sistema de banco de dados relacional para uma plataforma de streaming, inspirado em serviços como Netflix e Prime Video.
 
-## Funcionalidades Principais
+---
 
-O banco de dados suporta:
+## 🧾 Descrição
 
-* Cadastro de usuários e tipos de conteúdo.
+Este projeto simula a estrutura de um sistema completo de streaming, com foco na modelagem e implementação prática de um banco de dados relacional.
 
-* Registro de acessos e tempo assistido.
+A aplicação foi desenvolvida com **PostgreSQL** e integrada a um back-end em **Python + Flask**, com interface HTML básica para manipulação dos dados (CRUD).
 
-* Gerenciamento de planos de assinatura.
+---
 
-* Avaliações, favoritos e controle de assinaturas.
+## Funcionalidades do Sistema
+
+- Cadastro de usuários, tipos de conteúdo e planos de assinatura  
+- Registro de acessos e tempo assistido  
+- Avaliações, favoritos e histórico de visualizações  
+- Controle e gestão de assinaturas  
+
+---
 
 ## Tecnologias Utilizadas
 
-* **PostgreSQL**: SGBD relacional.
+- **PostgreSQL** — Sistema de gerenciamento de banco de dados relacional  
+- **SQL (DDL, DML)** — Linguagem de definição e manipulação de dados  
+- **Python** — Linguagem de programação para o back-end  
+- **Flask** — Microframework web para a construção da API e interface básica  
 
-* **SQL (DDL, DML)**: Linguagem para manipulação e definição de dados.
-
-* **Python**: Linguagem de programação para o backend da aplicação.
-
-* **Flask**: Microframework web para construção da API e interface do CRUD.
+---
 
 ## Estrutura do Banco de Dados
 
-Nosso banco de dados é composto por 8 tabelas principais:
+O sistema é composto por 8 tabelas principais:
 
-* `usuarios`
-
-* `tipos_conteudo`
-
-* `conteudos`
-
-* `acessos`
-
-* `planos`
-
-* `assinaturas`
-
-* `avaliacoes`
-
-* `favoritos`
+- `usuarios`  
+- `tipos_conteudo`  
+- `conteudos`  
+- `acessos`  
+- `planos`  
+- `assinaturas`  
+- `avaliacoes`  
+- `favoritos`
 
 ![Diagrama do Modelo Físico do Sistema de Streaming](database/docs/Modelo_Físico.png)
 
-## Estrutura do Repositório
+---
 
-O projeto está organizado na seguinte estrutura de diretórios para melhor modularidade e clareza:
+## Estrutura do Repositório
 
 <pre>
 .
-├── database/                   # Contém todos os scripts e documentação relacionados ao banco de dados
-│   ├── ddl/                    # Scripts de Data Definition Language (criação de tabelas)
-│   │   └── create_tables.sql   # Script principal de criação do esquema do DB
-│   ├── dml/                    # Scripts de Data Manipulation Language (inserção de dados)
-│   │   └── insert_data.sql     # Script de inserção de dados de exemplo
-│   ├── functions/              # Scripts de Functions e Procedures
-│   ├── triggers/               # Scripts de Triggers
-│   ├── views/                  # Scripts de Views
-│   └── docs/                   # Documentação adicional do banco de dados
-│       └── Modelo_Físico.png   # Diagrama do modelo físico do DB
-├── src/                        # Código fonte de aplicações 
-│   └── python/                 # Código Python da aplicação Flask
-│       ├── .venv/              # Ambiente virtual Python 
-│       ├── templates/          # Templates HTML 
-│       │   ├── index.html
-│       │   ├── add_user.html
-│       │   └── edit_user.html
-│       ├── app.py              # Arquivo principal da aplicação Flask
-│       └── requirements.txt    # Dependências do Python
-├── .gitignore                  # Arquivo para o Git ignorar arquivos e pastas específicas
-└── README.md                   # Este arquivo de documentação do projeto
+├── database/
+│   ├── ddl/                # Criação de tabelas
+│   ├── dml/                # Inserção de dados
+│   ├── functions/          # Funções e procedures
+│   ├── triggers/           # Triggers do banco
+│   ├── views/              # Views personalizadas
+│   └── docs/               # Diagramas e documentação
+├── src/
+│   └── python/
+│       ├── templates/      # HTMLs do CRUD
+│       ├── app.py          # Aplicação Flask
+│       └── requirements.txt
+└── README.md
 </pre>
 
-## Progresso e Próximas Fases do Projeto
+---
 
-### Fase 1: Modelagem e Estrutura Inicial
+## 📈 Progresso do Projeto
 
-* Criação e otimização do diagrama do modelo físico.
+### Fase 1: Estrutura Inicial
+- Criação do modelo físico e estrutura SQL  
+- Scripts de criação (`DDL`) e inserção (`DML`)  
 
-* Geração do script SQL de criação do banco de dados (`database/ddl/create_tables.sql`).
+### Fase 2: Objetos Avançados
+- Funções, procedures, triggers, views e índices  
+- Justificativas das implementações no código  
 
-* Geração do script SQL para popular as tabelas com dados de exemplo (`database/dml/insert_data.sql`).
+### Fase 3: CRUD com Flask
+- Desenvolvimento de CRUD básico com interface HTML  
+- Integração completa entre banco e aplicação  
 
-* Configuração inicial da estrutura de pastas do repositório.
-
-### Fase 2: Implementação de Objetos Avançados
-
-* Documentação do dicionário de dados do modelo físico.
-
-* Implementação de **3 Functions/Procedures**, **1 Trigger** e **3 Views**, além de **índices** para as tabelas.
-
-* Justificativa da escolha de cada objeto.
-
-### Fase 3: Desenvolvimento do CRUD
-
-* Desenvolvimento de um **CRUD** (Create, Read, Update, Delete) para interação com o banco de dados em uma linguagem de programação.
+---
 
 ## Como Configurar e Rodar
 
@@ -107,7 +94,7 @@ Siga estes passos para configurar e executar o projeto localmente:
 
 1.  **Clone o Repositório:**
     ```bash
-    git clone [https://github.com/Xandetds/Projeto-BD.git](https://github.com/Xandetds/Projeto-BD.git)
+    git clone https://github.com/Xandetds/Projeto-BD.git
     ```
     Navegue até a pasta do projeto clonado:
     ```bash
@@ -144,20 +131,29 @@ Siga estes passos para configurar e executar o projeto localmente:
         python app.py
         ```
     * Abra seu navegador e acesse: `http://127.0.0.1:5000/`
+  
+---
 
-## Bugs Notáveis e Lições Aprendidas
+## Bugs e Lições Aprendidas
 
-* **Problema:** Erro "relação 'public.usuarios' não existe" no Flask, mesmo com tabelas criadas e populadas no PostgreSQL.
-* **Causa:** O banco de dados (`sistema_streaming`) havia sido criado e populado antes do desenvolvimento/integração do CRUD em Flask.
-* **Solução:** Apagar e recriar o banco de dados do zero, executando `create_tables.sql` e `insert_data.sql` novamente.
-* **Lição:** Em ambientes de desenvolvimento, é uma prática altamente recomendada garantir um **estado inicial "limpo" do banco de dados, especialmente após grandes mudanças de ambiente ou longa pausa no desenvolvimento. Isso garante que a aplicação está interagindo com a versão esperada do schema e dos dados.
+Problema:
+Erro: relação 'public.usuarios' não existe ao rodar o Flask.
 
-## Autores
+Causa:
+O banco havia sido populado antes da aplicação estar pronta.
 
-* **Alexandre Tibes da Silva**
+Solução:
+Recriar o banco e executar os scripts novamente, garantindo consistência com a versão atual do app.
 
-* **Guilherme Victor Machado**
+Lição:
+Sempre trabalhar com um ambiente limpo após pausas ou mudanças estruturais no banco.
+Isso evita conflito entre schema e aplicação.
 
-* **Lucas Hoffmann**
-    
-*(Estudantes de Engenharia de Software, Unisatc.)*
+---
+
+## 👤 Autor
+
+**Alexandre Tibes da Silva**  
+Estudante de Engenharia de Software – UniSatc  
+📧 [alexandretibes9@gmail.com](mailto:alexandretibes9@gmail.com)  
+🔗 [linkedin.com/in/alexandre-tibes-2a79692b5](https://www.linkedin.com/in/alexandre-tibes-2a79692b5)
