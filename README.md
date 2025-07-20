@@ -16,7 +16,7 @@ A aplicação foi desenvolvida com **PostgreSQL** e integrada a um back-end em *
 
 ---
 
-## Funcionalidades do Sistema
+## 🧩 Funcionalidades do Sistema
 
 - Cadastro de usuários, tipos de conteúdo e planos de assinatura  
 - Registro de acessos e tempo assistido  
@@ -25,7 +25,7 @@ A aplicação foi desenvolvida com **PostgreSQL** e integrada a um back-end em *
 
 ---
 
-## Tecnologias Utilizadas
+## 🔧 Tecnologias Utilizadas
 
 - **PostgreSQL** — Sistema de gerenciamento de banco de dados relacional  
 - **SQL (DDL, DML)** — Linguagem de definição e manipulação de dados  
@@ -34,7 +34,7 @@ A aplicação foi desenvolvida com **PostgreSQL** e integrada a um back-end em *
 
 ---
 
-## Estrutura do Banco de Dados
+## 🗃️ Estrutura do Banco de Dados
 
 O sistema é composto por 8 tabelas principais:
 
@@ -51,7 +51,7 @@ O sistema é composto por 8 tabelas principais:
 
 ---
 
-## Estrutura do Repositório
+## 📂 Estrutura do Repositório
 
 <pre>
 .
@@ -88,7 +88,7 @@ O sistema é composto por 8 tabelas principais:
 
 ---
 
-## Como Configurar e Rodar
+## 🧪 Como Configurar e Rodar
 
 Siga estes passos para configurar e executar o projeto localmente:
 
@@ -134,7 +134,7 @@ Siga estes passos para configurar e executar o projeto localmente:
   
 ---
 
-## Bugs e Lições Aprendidas
+## 🐝 Bugs e Lições Aprendidas
 
 Problema:
 Erro: relação 'public.usuarios' não existe ao rodar o Flask.
